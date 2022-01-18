@@ -21,7 +21,7 @@ module.exports = {
       .some(u => u.email === dados.email)
 
     if(emailExistente) {
-      throw new Error('E-mail cadastrado')
+      throw new Error('E-mail já cadastrado')
     }
     
     const novo = {

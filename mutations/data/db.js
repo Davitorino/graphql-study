@@ -26,11 +26,13 @@ const usuarios = [{
   status: 'BLOQUEADO'
 }]
 
+id = 1
+
 const perfis = [{
-  id: 1,
+  id: proximoId(),
   tipo: 'Comum'
 }, {
-  id: 2,
+  id: proximoId(),
   tipo: 'Administrador'
 }]
 
