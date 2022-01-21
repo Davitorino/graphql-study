@@ -4,8 +4,8 @@ module.exports = {
   client: 'mysql',
   connection: {
     database: 'projeto-final',
-    user:     'root',
-    password: '12345678'
+    user: 'root',
+    password: '4815162342'
   },
   pool: {
     min: 2,
