@@ -1,4 +1,5 @@
-const { ApolloServer, gql } = require('apollo-server')
+require('dotenv').config()
+const { ApolloServer } = require('apollo-server')
 const { importSchema } = require('graphql-import')
 const resolvers = require('./resolvers')
 
