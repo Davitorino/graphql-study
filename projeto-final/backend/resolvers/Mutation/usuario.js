@@ -5,7 +5,7 @@ const { usuario: obterUsuario } = require('../Query/usuario')
 
 const mutations = {
     registrarUsuario(_, { dados }) {
-        return mutation.novoUsuario(_, {
+        return mutations.novoUsuario(_, {
             dados: {
                 nome: dados.nome,
                 email: dados.email,
