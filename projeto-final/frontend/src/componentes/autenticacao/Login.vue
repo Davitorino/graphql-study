@@ -80,7 +80,8 @@ export default {
                 variables: {
                     email: this.usuario.email,
                     senha: this.usuario.senha,
-                }
+                },
+                fetchPolicy: 'network-only'
             }).then(res => {
                 this.dados = res.data.login
                 this.usuario = {}
