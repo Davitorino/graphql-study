@@ -80,11 +80,44 @@ export default {
     },
     methods: {
         novoUsuario() {
-            // implementar
+            this.$api.mutate({
+                mutation: gql`
+                    mutation (
+                        $nome: String!
+                        $email: String!
+                        $senha: String!
+                        $perfis: [PerfilFiltro]
+                    ) {
+                        novoUsuario(
+                            dados: {
+                                nome: $nome
+                                email: $email
+                                senha: $senha
+                                perfis: $perfis
+                            }
+                        ) {
+                            id nome email perfis { rotulo }
+                        }
+                    }
+                `,
+                variables: {
+                    nome: this.usuario.nome,
+                    email: this.usuario.email,
+                    senha: this.usuario.senha,
+                    perfis: this.perfisSelecionados,
+                }
+            }).then(res => {
+                this.dados = res.data.novoUsuario
+                this.usuario = {}
+                this.erros = null
+            }).catch(e => {
+                this.erros = e
+            })
         },
         obterPerfis() {
             this.$api.query({
-                query: gql`{ perfis { id rotulo } }`
+                query: gql`{ perfis { id rotulo } }`,
+                fetchPolicy: 'network-only'
             }).then(res => {
                 this.perfis = res.data.perfis
                 this.erros = null
